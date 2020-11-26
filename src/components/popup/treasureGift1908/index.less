@@ -1,0 +1,674 @@
+.pop-window {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  .pop-mask-1908 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+  }
+}
+
+.anim {
+  transition: all 1s;
+  top: -0.4*100px !important;
+}
+
+.pop-rules {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 12;
+  background: rgba(0, 0, 0, 0.7);
+
+  .rule-content {
+    padding: 1.2*100px 0.1*100px 0 0.3*100px;
+    font-size: 0.24*100px;
+    color: #FFF2D4;
+    line-height: 0.38*100px;
+  }
+}
+
+.rule-modal {
+  position: fixed;
+  z-index: 19;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .modal-bg {
+    width: 5.18*100px;
+    height: 5.88*100px;
+    position: relative;
+    z-index: 19;
+    margin: auto;
+    top: 15%;
+    padding-top: 0.43*100px;
+
+    .modal-title {
+      width: 1.25*100px;
+      height: 0.41*100px;
+      display: block;
+      margin: 0 auto 0.19*100px;
+    }
+
+    .modal-line {
+      width: 4.77*100px;
+      height: 0.02*100px;
+      display: block;
+      margin: 0 auto 0.25*100px;
+    }
+
+    p {
+      box-sizing: border-box;
+      padding: 0 0.7*100px 0 0.56*100px;
+      line-height: 0.42*100px;
+      color: #FFFFFE;
+      font-size: 0.24*100px;
+      position: relative;
+
+      &::before {
+        .bg-set('../img/treasureGift1908/modal-c.png');
+        width: 0.11*100px;
+        height: 0.11*100px;
+        display: inline-block;
+        content: '';
+        position: absolute;
+        left: 0.33*100px;
+        top: .12*100px;
+      }
+    }
+
+    img {
+      width: 5.45*100px;
+      height: 6.4*100px;
+    }
+
+    .rule-header {
+      text-align: center;
+      background: #5A37AB;
+      padding: 0.24*100px 0 0.28*100px;
+      border-radius: 0.1*100px 0.1*100px 0 0;
+
+      img {
+        width: 1.22*100px;
+        height: 0.38*100px;
+      }
+
+    }
+
+    .rule-main {
+      font-size: 0.24*100px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 0.3*100px;
+      background: #402286;
+      padding: 0.32*100px 0.44*100px 0.62*100px 0.78*100px;
+
+      border-radius: 0 0 0.1*100px 0.1*100px;
+
+      ul {
+        li {
+          position: relative;
+          letter-spacing: 1px;
+          line-height: 0.32*100px;
+
+          &:first-child {
+            margin-bottom: 0.4*100px;
+          }
+
+          &::before {
+            content: ' ';
+            position: absolute;
+            top: 0.1*100px;
+            left: -0.24*100px;
+            background: rgba(255, 255, 255, 0.42);
+            width: 0.1*100px;
+            height: 0.1*100px;
+            border-radius: 0.1*100px;
+          }
+        }
+      }
+    }
+  }
+
+  .closeRule {
+    display: block;
+    width: 0.67*100px;
+    height: 0.67*100px;
+    background: url(../img/treasureGift1908/close.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    bottom: -1.8*100px;
+    margin-left: -0.33*100px;
+    z-index: 12;
+  }
+}
+
+.rule-con {
+  /*width: 5.46*100px;
+    height: 5.82*100px;*/
+  width: 5.45*100px;
+  height: 6.82*100px;
+  background: url(../img/treasureGift1908/rule-text-bg.png) no-repeat;
+  background-size: 100% 100%;
+  position: fixed;
+  left: 50%;
+  top: 45%;
+  margin-left: -2.73*100px;
+  margin-top: -2.91*100px;
+  z-index: 12;
+
+  .y-dot,
+  .y-kg {
+    display: inline-block;
+    width: 0.11*100px;
+    height: 0.11*100px;
+    border-radius: 50%;
+    margin-right: 0.1*100px;
+    position: relative;
+    top: -0.03*100px;
+  }
+
+  .y-dot {
+    background: #F4E3A7;
+  }
+
+  h4 {
+    height: 0.7*100px;
+    line-height: 0.72*100px;
+    text-align: center;
+    font-size: 0.28*100px;
+    color: #B23701;
+
+  }
+}
+
+.gift-wrap {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 11;
+
+  .gift-content {
+    background-size: 100% 100%;
+    margin: 0 auto;
+
+    .btn-rule {
+      position: absolute;
+      top: 2.44*100px;
+      right: 0.6*100px;
+      width: 1.6*100px;
+      height: 0.4*100px;
+      color: #F6D8A6;
+      font-size: 0.22*100px;
+      text-align: center;
+      line-height: 0.4*100px;
+      background: url('../img/treasureGift1908/rule-btn.png') no-repeat center center;
+      background-size: 100% 100%;
+    }
+
+    .bg {
+      width: 100%;
+      display: block;
+      width: 7*100px;
+      height: 11.28*100px;
+      margin: auto 0.04*100px auto 0.16*100px;
+    }
+
+    &.jd {
+      height: 8.5*100px;
+      top: 1*100px;
+    }
+
+    &.midautumn {
+      width: 100%;
+      position: relative;
+    }
+
+    .gift-box {
+      text-align: center;
+      position: absolute;
+      top: 2.84*100px;
+      width: 100%;
+    }
+
+    .rule-font {
+      position: absolute;
+      bottom: 0.3*100px;
+      width: 3.05*100px;
+      height: 0.87*100px;
+      box-sizing: border-box;
+      left: 1.15*100px;
+      padding: 0.08*100px 0.1*100px 0.08*100px 0.15*100px;
+
+      P {
+        font-size: 0.2*100px;
+      }
+
+      .gift-name {
+        color: #E6C796;
+        font-weight: bold;
+      }
+
+      .gift-rule {
+        color: #DDDDE4;
+        opacity: 0.8;
+        margin-top: 0.03*100px;
+      }
+    }
+
+    .number {
+      margin: 0.1*100px auto .15*100px;
+      width: 2.12*100px;
+      height: .57*100px;
+      line-height: .57*100px;
+      position: relative;
+      top: .6*100px;
+      left: 0.1*100px;
+      color: #B23701;
+      font-size: .24*100px;
+      font-weight: bold;
+      text-align: center;
+      background-size: 100% 100%;
+
+      &.jd {
+        top: 0.15*100px;
+      }
+    }
+
+    .hd-rule {
+      width: 0.93*100px;
+      height: 0.92*100px;
+      position: absolute;
+      right: 0.0*100px;
+      top: 0;
+    }
+
+    .hd-rule-jdd {
+      position: absolute;
+      right: .6*100px;
+      top: 1.5*100px;
+      color: #f9b434;
+      writing-mode: tb-rl;
+    }
+
+    .gift-list {
+      overflow: hidden;
+      margin: 0 auto;
+      text-align: center;
+
+      .g-item {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: 0 0.1*100px;
+
+      }
+
+      .g-item-left {
+        text-align: left;
+        flex: 0 0 0.85*100px;
+        height: 0.9*100px;
+        position: relative;
+        margin-right: 0.03*100px;
+
+        img {
+          width: 0.72*100px;
+          height: 0.7*100px;
+          position: absolute;
+          left: 0.09*100px;
+          top: 0.09*100px;
+        }
+      }
+
+      .g-items {
+        .btn-price {
+          display: block;
+          width: 2.07*100px;
+          height: 0.43*100px;
+          line-height: 0.45*100px;
+          background: url(../img/treasureGift1908/price-bg.png) no-repeat;
+          background-size: 100% 100%;
+          font-size: 0.22*100px;
+          color: #25273A;
+          font-weight: bold;
+          margin: 0 auto;
+
+          span {
+            font-size: 0.3*100px;
+          }
+
+          &.btn-gray {
+            background: url(../img/treasureGift1908/btn-gray.png) no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+
+        .text {
+          width: 100%;
+          height: 0.3*100px;
+          line-height: 0.35*100px;
+          position: absolute;
+          left: 0;
+          bottom: 0.09*100px;
+          font-weight: normal;
+          font-size: 0.18*100px;
+          color: #D7BE7E;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .g-container {
+        position: relative;
+        width: 2.04*100px;
+        height: 3.3*100px;
+        font-size: .2*100px;
+        display: inline-block;
+        //background: url(../../images/treasureGift/guoQing/card-left-bg.png);
+        background-size: 100% 100%;
+        box-sizing: border-box;
+        margin: .1*100px 0.07*100px;
+
+        span {
+          display: inline-block
+        }
+
+        p {
+          width: 1.48*100px;
+          position: absolute;
+          top: 1.74*100px;
+          left: 50%;
+          margin-left: -0.74*100px;
+          font-weight: bold;
+          color: #AB3F19;
+          line-height: 0.22*100px;
+          text-align: center;
+          font-size: 0.2*100px;
+
+          span {
+            font-size: 0.22*100px;
+            color: #FFF961;
+          }
+        }
+
+        .left-num {
+          float: right;
+          color: #BC6600;
+        }
+
+        .gift-detail {
+          width: 1.4*100px;
+          height: 0.3*100px;
+          display: block;
+          color: #fff;
+          font-size: .2*100px;
+          text-align: left;
+          line-height: .3*100px;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+
+        .gift-desc {
+          line-height: .24*100px;
+          text-align: left;
+        }
+
+        &.enabled {
+
+          .gift-detail {
+            color: #737373;
+          }
+
+          img {
+            width: 0.72*100px;
+            height: 0.7*100px;
+          }
+
+          .left-num {
+            color: #F95E20
+          }
+        }
+      }
+    }
+
+    .desc {
+      height: 0.4*100px;
+      margin-top: 1.38*100px;
+      width: 100%;
+      text-align: center;
+      color: #B45900;
+      font-size: .2*100px;
+    }
+
+    .rules {
+      margin: .38*100px auto 0;
+      line-height: .28*100px;
+      width: 57%;
+      text-align: left;
+      font-size: .22*100px;
+      color: #814500;
+
+      li {
+        list-style: outside;
+      }
+    }
+  }
+}
+
+.g-desc {
+  position: absolute;
+  // bottom: .4*100px;
+  bottom: .38*100px;
+  border-radius: 2*100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 71%;
+  height: 0.4*100px;
+  overflow: hidden;
+  z-index: 2;
+  text-align: center;
+  font-size: .26*100px;
+  text-align: center;
+
+  &.jd {
+    top: 2.7*100px;
+    border-radius: 0;
+    background: linear-gradient(#831313, #A11717);
+    // color: #FFECAD;
+    color: black !important;
+  }
+
+  ul {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    li {
+      height: 0.4*100px;
+      line-height: 0.4*100px;
+      color: black !important;
+    }
+  }
+}
+
+.close-btn {
+  position: absolute;
+  right: .6*100px;
+  width: .48*100px;
+  height: .48*100px;
+  background: url(../img/treasureGift1908/btn-close.png);
+  background-size: 100% 100%;
+
+  &.jd {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    top: auto;
+    right: auto;
+  }
+}
+
+.result-pop {
+  position: absolute;
+  text-align: center;
+  z-index: 11;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-60%);
+
+  .result-wrap {
+    width: 4.48*100px;
+    height: 7.98*100px;
+    margin: auto;
+    padding-top: 3.52*100px;
+    box-sizing: border-box;
+    background-position: center center;
+
+    &.lucky {
+      .bg-set('../img/treasureGift1908/lucky-bg.png');
+
+      .man-icon {
+        .bg-set('../img/treasureGift1908/lucky-man.png');
+        width: 3.3*100px;
+        height: 3.2*100px;
+        margin: 0.3*100px auto 0;
+      }
+    }
+
+    &.failed {
+      .bg-set('../img/treasureGift1908/failed-bg.png');
+
+      .man-icon {
+        .bg-set('../img/treasureGift1908/failed-man.png');
+        width: 1.5*100px;
+        height: 2*100px;
+        margin: 1*100px auto 0;
+      }
+    }
+
+    .ext-award {
+      margin: 0.74*100px auto 0;
+      font-size: 0.18*100px;
+      width: 3.26*100px;
+      height: 3.04*100px;
+      box-sizing: border-box;
+      border: 0.02*100px solid #8F7ADC;
+      border-radius: 0.1*100px;
+
+      .ext-title {
+        padding: 0.08*100px 0 0.12*100px;
+        color: #FBCE46;
+
+        &::before {
+          content: '';
+          display: block;
+          width: 2.3*100px;
+          height: 0.26*100px;
+          .bg-set('../img/treasureGift1908/ex-text.png');
+          margin: 0.06*100px auto;
+        }
+      }
+
+      .ext-img {
+        width: 1.48*100px;
+        height: 1.48*100px;
+        margin: auto;
+        background: #9E62CC;
+        border-radius: 0.1*100px;
+        box-sizing: border-box;
+        position: relative;
+
+        img {
+          max-width: 1*100px;
+          max-height: 0.8*100px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -74%);
+        }
+
+        span {
+          display: block;
+          width: 100%;
+          position: absolute;
+          bottom: 0.16*100px;
+          left: 0;
+        }
+      }
+
+      .ext-other {
+        margin-top: 0.16*100px;
+        color: #DDB7F7;
+      }
+    }
+
+    p.number-show {
+      position: absolute;
+      width: 100%;
+      top: 3.52*100px;
+      left: 50%;
+      margin-left: -50%;
+      font-size: .24*100px;
+      line-height: .3*100px;
+
+      i {
+        color: #FCE723;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .more-btn {
+    position: absolute;
+    bottom: 0.38*100px;
+    left: 50%;
+    .bg-set('../img/treasureGift1908/more-btn.png');
+    width: 2.08*100px;
+    height: 0.56*100px;
+    margin-left: -1.04*100px;
+  }
+
+  .desc {
+    position: absolute;
+    bottom: 0.12*100px;
+    left: 50%;
+    width: 100%;
+    margin-left: -50%;
+    font-size: .18*100px;
+    color: #AC6ACA;
+    line-height: .2*100px;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  .close-btn {
+    left: 50%;
+    bottom: -0.8*100px;
+    margin-left: -0.3*100px;
+  }
+}
+
+.bg-set(@url) {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url(@url);
+}

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-ch">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+  <meta name="x5-orientation" content="portrait">
+  <meta name="screen-orientation" content="portrait">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <link rel="apple-touch-icon" sizes="114x114" href="./img/icon_ddw.png" />
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+  <link rel="icon" href="./img/icon_game.png">
+  <!--<script src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/2.5.1/vconsole.min.js"></script>-->
+  <title>游戏大厅</title>
+  <script type="text/javascript">
+    // 定义添加方法，
+    // urls----script.src地址数组、callback---回调函数
+    function loadScripts(urls, callback) {
+      callback = callback || function () { }
+      // 添加script属性，并添加到head中
+      var loader = function (src, handler) {
+        var script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src = src
+        // 重点！！！！script加载成功
+        script.onload = function () {
+          script.onload = null
+          script.onerror = null
+          handler()
+        }
+        script.onerror = function () {
+          script.onload = null
+          script.onerror = null
+          callback({
+            message: src + '依赖未加载成功！'
+          })
+        }
+        var head = document.getElementsByTagName('head')[0];
+        (head || document.body).appendChild(script)
+      };
+      // 自执行函数，用于循环loader
+      (function run() {
+        if (urls.length > 0) {
+          loader(urls.shift(), run)
+        } else {
+          callback()
+        }
+      })()
+    }
+    var curChannel = localStorage.getItem('APP_CHANNEL')
+    var relies = []
+    switch (curChannel) {
+      case '100039':
+      case '100042':
+        // 加载百度广告
+        relies = ['https://na0.bdstatic.com/static/cover/static/rewardVideo/index-1.1.0.js?time=2015']
+        loadScripts(relies, function cb(err) {
+          if (err) {
+            console.log(err.message)
+            return
+          }
+        })
+        break
+      // case '100067':
+      //   // 加载趣头条广告
+      //   relies = ['//newidea4-gamecenter-frontend.1sapp.com/sdk/prod/h5.v1.0.0.js?spread=required', './static/js/qttAds.js']
+      //   loadScripts(relies, function cb(err) {
+      //     if (err) {
+      //       return console.log(err.message)
+      //     }
+      //   })
+      //   break
+      default:
+        break
+    }
+  </script>
+</head>
+
+<body onpageshow="pageShow(event)">
+  <div id="app">
+    <div class="loading-box">
+      <div class="loader"></div>
+      <p>正在进入平台</p>
+    </div>
+    <style>
+      .loading-box {
+        display: none;
+        font-size: 2.5rem;
+        color: #999;
+        padding: 1em;
+        margin-top: 10rem;
+        vertical-align: top;
+        -webkit-transition: .3s color, .3s border;
+        transition: .3s color, .3s border;
+        text-align: center
+      }
+
+      .loading-box p {
+        font-size: 1rem;
+        margin-top: 2rem;
+      }
+
+      [class*="loader-"] {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        color: inherit;
+        vertical-align: middle;
+        pointer-events: none;
+      }
+
+      .loading-box .loader {
+        background: #999;
+        position: relative;
+        text-align: center;
+        -webkit-animation: loader 1s ease-in-out infinite;
+        animation: loader 1s ease-in-out infinite;
+        -webkit-animation-delay: 0.4s;
+        animation-delay: 0.4s;
+        width: .25em;
+        height: .5em;
+        margin: 0 auto;
+        text-align: center
+      }
+
+      .loading-box .loader:after,
+      .loading-box .loader:before {
+        content: '';
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        background: inherit;
+        -webkit-animation: inherit;
+        animation: inherit;
+      }
+
+      .loading-box .loader:before {
+        right: .5em;
+        -webkit-animation-delay: 0.2s;
+        animation-delay: 0.2s;
+      }
+
+      .loading-box .loader:after {
+        left: .5em;
+        -webkit-animation-delay: 0.6s;
+        animation-delay: 0.6s;
+      }
+
+      @-webkit-keyframes loader {
+
+        0%,
+        100% {
+          box-shadow: 0 0 0 currentcolor, 0 0 0 currentcolor;
+        }
+
+        50% {
+          box-shadow: 0 -.25em 0 currentcolor, 0 .25em 0 currentcolor;
+        }
+      }
+
+      @keyframes loader {
+
+        0%,
+        100% {
+          box-shadow: 0 0 0 currentcolor, 0 0 0 currentcolor;
+        }
+
+        50% {
+          box-shadow: 0 -.25em 0 currentcolor, 0 .25em 0 currentcolor;
+        }
+      }
+    </style>
+  </div>
+
+  <style>
+    #ad-wrp .ad-container .close-wrp {
+      height: 1.90rem;
+      line-height: 1.84rem;
+      border-radius: 0.95rem;
+      padding: 0 0.82rem;
+      font-size: 0.82rem;
+    }
+
+    #ad-wrp .ad-container .timer-wrp .timer,
+    #ad-wrp .ad-container .timer-wrp .close {
+      line-height: 1.90rem !important;
+    }
+
+    #ad-wrp .ad-container .volume-wrp {
+      width: 2.09rem;
+      height: 1.46rem;
+    }
+
+    .ad-video-page .banner-wrp {
+      border-radius: 0.19rem;
+      padding: 0.76rem 0.63rem;
+    }
+
+    .ad-video-page .banner-wrp .banner-icon {
+      width: 3.55rem;
+      height: 3.55rem;
+    }
+
+    .ad-video-page .banner-wrp .banner-icon img {
+      border-radius: 0.76rem;
+    }
+
+    .ad-video-page .banner-wrp .banner-info {
+      padding-left: 0.51rem;
+    }
+
+    .ad-video-page .banner-wrp .banner-info .banner-title {
+      font-size: 1.14rem;
+    }
+
+    .ad-video-page .banner-wrp .banner-info .banner-desc {
+      height: 1.39rem;
+      font-size: 0.76rem;
+    }
+
+    .ad-video-page .banner-wrp .banner-btn>div {
+      height: 2.15rem;
+      line-height: 2.15rem;
+      font-size: 0.89rem;
+      margin-top: 0.82rem;
+      border-radius: 1.90rem;
+    }
+
+    .ad-video-page .banner-wrp .banner-info-wrp {
+      width: calc(100% - 3.55rem) !important;
+    }
+
+    #ad-wrp .ad-tail-page .banner-icon {
+      height: 4.18rem;
+      width: 4.18rem;
+      top: -2.09rem;
+      left: 50%;
+      margin-left: -2.09rem;
+    }
+
+    #ad-wrp .ad-tail-page .banner-info {
+      padding-top: 4.43rem;
+    }
+
+    #ad-wrp .ad-tail-page .banner-title {
+      font-size: 1.39rem;
+      line-height: 1.39rem;
+    }
+
+    #ad-wrp .ad-tail-page .banner-desc {
+      font-size: 1.14rem;
+    }
+
+    #ad-wrp .ad-tail-page .banner-desc:before {
+      width: 0.51rem;
+      height: 0.95rem;
+      margin-top: 0.19rem;
+      margin-right: 0.19rem;
+    }
+
+    #ad-wrp .ad-tail-page .banner-desc:after {
+      width: 0.51rem;
+      height: 0.95rem;
+      margin-top: 0.19rem;
+      margin-left: 0.19rem;
+    }
+
+    #ad-wrp .ad-tail-page .banner-btn {
+      border-radius: 0.19rem;
+    }
+
+    #ad-wrp .ad-tail-page .banner-btn>div {
+      font-size: 1.01rem;
+    }
+
+    @media only screen and (orientation: landscape) {
+      .banner-wrp {
+        height: 5.07rem;
+      }
+    }
+
+    @media only screen and (orientation: portrait) {
+      .banner-wrp {
+        height: 5.07rem;
+      }
+    }
+  </style>
+  <script>
+    //解决返回读缓存页面不刷新的问题，机型：7,8p
+    function pageShow(event) {
+      if(event.persisted){
+        window.location.reload()
+      }
+    }
+    !(function () {
+      let noCheckTokenArr = ['riskManagement', 'authentication', 'zfbmiddle', 'wechatmiddle', 'feedback', 'loginTip', 'userAgreement']
+      let noCheckToken = noCheckTokenArr.find(function (item) {
+        return window.location.href.indexOf(item) != -1
+      })
+      if (noCheckToken) { return false }
+      let channel = localStorage.getItem('APP_CHANNEL');
+      if (channel == 100061 && navigator.userAgent.indexOf('Android') == -1 && parent.location.href == location.href) {
+        //在全屏模式下，如果上层地址和当前一样，说明没有嵌iframe，直接replace到frame.html
+        location.replace('/xmWap/frame.html?channel=' + channel + '&time=' + new Date().getTime());
+      }
+    })()
+  </script>
+  <script type="text/javascript">
+
+    window.loadJs = function (jsSrc, refresh) {
+      // 所有渠道返回的整合
+      var time1 = new Date().getTime()
+      var script1 = document.createElement('script')
+      script1.type = 'text/javascript'
+      if (!refresh) {
+        script1.src = jsSrc;
+      }
+      else {
+        script1.src = jsSrc + '?time=' + time1
+      }
+      document.head.appendChild(script1)
+    }
+    loadJs('https://wap.beeplaying.com/ErrorPage/linkUrl.js', true);
+
+    //为了进平台跳维护下处理
+    loadJs('https://wap.beeplaying.com/ErrorPage/server.js', true);
+  </script>
+  <script type="text/javascript">
+
+    //微信小程序支付用
+    if (localStorage.getItem('APP_CHANNEL') == 100100) {
+      loadJs('https://res.wx.qq.com/open/js/jweixin-1.4.0.js', false);
+    }
+
+    // wifi万能钥匙  支付用
+    if (localStorage.getItem('APP_CHANNEL') == 100081) {
+
+      loadJs('https://a.lianwifi.com/miniapp/wifikey-bridge/1.0.1/index.js', true)
+
+      function chargeState(paystate, res) {
+        var gameUrl = localStorage.getItem('originDeffer') ? localStorage.getItem('originDeffer') : ''
+        if (gameUrl) {
+          if (!gameUrl.includes('activities') && !gameUrl.includes('xmWap') && !gameUrl.includes('wap') && !gameUrl.includes('bdWap')) {
+            parent.location.href = gameUrl
+          } else {
+            location.reload()
+          }
+        } else {
+          location.reload()
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

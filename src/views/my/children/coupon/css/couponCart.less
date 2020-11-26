@@ -1,0 +1,189 @@
+.coupon-wrapper {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  margin-bottom: 24px;
+  padding: 20px 0 20px 24px;
+  font-size: 18px;
+  .coupon-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .coupon-detail {
+      position: relative;
+      height: 132px;
+      .coupon-name {
+        font-size: 24px;
+        font-weight: bold;
+        position: relative;
+        line-height: 36px;
+        margin-bottom: 4px;
+        .red-tag {
+          position: absolute;
+          width: 86px;
+          height: 24px;
+          line-height: 24px;
+          text-align: center;
+          color: #fff;
+          font-size: 18px;
+          font-weight: 500;
+          background: url(../img/red-tag-bg.png) no-repeat center center;
+          background-size: 100% 100%;
+          top: 50%;
+          margin-top: -12px;
+        }
+      }
+      .coupon-tags {
+        display: flex;
+        margin-bottom: 4px;
+        li {
+          margin-right: 10px;
+          height: 26px;
+          line-height: 24px;
+          border: 1px solid;
+          border-radius: 16px;
+          padding: 0 8px;
+        }
+      }
+      .rule-btn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        .arrow-icon {
+          width: 26px;
+          height: 26px;
+          display: inline-block;
+          background: no-repeat center center;
+          background-size: 100% 100%;
+          margin-left: 6px;
+          &.up {
+            background-image: url('../img/up.png');
+          }
+          &.down {
+            background-image: url('../img/down.png');
+          }
+        }
+      }
+    }
+    .coupon-info {
+      border-left: 1px solid #eee;
+      width: 218px;
+      height: 132px;
+      box-sizing: border-box;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+      justify-content: center;
+      .coupon-desc {
+        width: 100%;
+        .coupon-price {
+          font-size: 42px;
+          line-height: 1;
+          font-weight: 800;
+          span {
+            font-size: 24px;
+          }
+        }
+        .coupon-instructions {
+          line-height: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #888;
+          span {
+            display: inline-block;
+            max-width: 180px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+      .btn-wrapper {
+        width: 100px;
+        height: 44px;
+        line-height: 44px;
+        border-radius: 12px;
+        overflow: hidden;
+        div {
+          background: #fff;
+          color: #888;
+        }
+        .not-use {
+          background: #f0f0f0;
+          color: #888;
+        }
+        .in-use {
+          background: #ff7800;
+          color: #fff;
+        }
+        .to-use {
+          background: #ff4141;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .coupon-rules-wrapper {
+    margin-top: 20px;
+    padding: 0 44px 0 6px;
+    .coupon-rules {
+      border-top: 1px solid #eee;
+      padding-top: 12px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+  &.effective {
+    color: #bbb;
+    background: #fff;
+    .coupon-content {
+      .coupon-detail {
+        .coupon-name {
+          color: #000;
+        }
+        .coupon-tags {
+          li {
+            border-color: #ff7800;
+            color: #ff7800;
+          }
+        }
+      }
+      .coupon-info {
+        .coupon-desc {
+          .coupon-price {
+            color: #ff4141;
+          }
+        }
+      }
+    }
+    .coupon-rules-wrapper {
+      .coupon-rules {
+        color: #bbb;
+      }
+    }
+  }
+  &.invalid {
+    color: #fff;
+    background: #bbb;
+    .coupon-content {
+      .coupon-detail {
+        .coupon-tags {
+          li {
+            border-color: #fff;
+          }
+        }
+      }
+      .coupon-info {
+        .coupon-desc {
+          .coupon-instructions {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
